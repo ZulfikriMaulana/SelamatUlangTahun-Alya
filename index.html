@@ -11,9 +11,8 @@
         .balloon {
             position: absolute;
             bottom: -150px;
-            width: 80px;
-            height: 100px;
-            background: pink;
+            width: 60px;
+            height: 80px;
             border-radius: 50% 50% 50% 50%;
             animation: floatUp 10s infinite ease-in;
             opacity: 0.8;
@@ -36,22 +35,25 @@
 <body class="bg-red-100 font-sans relative overflow-x-hidden">
 
     <!-- Balon -->
-    <div class="balloon bg-red-400 left-[10%]" style="animation-delay:0s;"></div>
-    <div class="balloon bg-pink-400 left-[30%]" style="animation-delay:2s;"></div>
-    <div class="balloon bg-yellow-300 left-[50%]" style="animation-delay:4s;"></div>
-    <div class="balloon bg-purple-400 left-[70%]" style="animation-delay:6s;"></div>
+    <div class="balloon bg-red-400 left-[5%]" style="animation-delay:0s;"></div>
+    <div class="balloon bg-pink-400 left-[15%]" style="animation-delay:2s;"></div>
+    <div class="balloon bg-yellow-300 left-[25%]" style="animation-delay:4s;"></div>
+    <div class="balloon bg-purple-400 left-[40%]" style="animation-delay:1s;"></div>
+    <div class="balloon bg-green-400 left-[55%]" style="animation-delay:3s;"></div>
+    <div class="balloon bg-blue-400 left-[70%]" style="animation-delay:5s;"></div>
+    <div class="balloon bg-pink-300 left-[85%]" style="animation-delay:6s;"></div>
 
     <!-- Hero Section -->
     <section
         class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-red-400 to-pink-500 text-white relative z-10 px-4">
         <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 animate-bounce">Happy Birthday, Alya ❤️</h1>
         <p class="text-base sm:text-lg md:text-2xl mb-8">Semoga hari spesialmu penuh kebahagiaan dan cinta 🎂✨</p>
-        <button onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})"
-            class="bg-white text-red-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-100 transition">Lihat Gallery
-            📸</button>
+        <button onclick="playMusicAndOpenGallery()"
+            class="bg-white text-red-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-100 transition">Lihat Gallery 📸
+            &amp; Play Music 🎶</button>
 
         <!-- Musik -->
-        <audio id="bg-music" autoplay loop>
+        <audio id="bg-music" loop>
             <source src="music.mp3" type="audio/mpeg">
             Browser kamu tidak mendukung audio.
         </audio>
@@ -110,6 +112,13 @@
             if (currentIndex < 0) currentIndex = galleryImages.length - 1;
             if (currentIndex >= galleryImages.length) currentIndex = 0;
             document.getElementById("lightboxImage").src = galleryImages[currentIndex];
+        }
+
+        // Play musik + scroll ke gallery
+        function playMusicAndOpenGallery() {
+            const music = document.getElementById("bg-music");
+            music.play();
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
